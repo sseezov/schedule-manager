@@ -17,11 +17,23 @@ fastify.register(fastifyPostgres, {
 })
 
 fastify.register(fastifyStatic, {
-  root: path.join(__dirname, '../build_admin'),
+  root: path.join(__dirname, '../builds'),
 })
 
 fastify.get('/admin', (request, reply) => {
-  reply.sendFile('index.html')
+  reply.sendFile('admin/index.html')
+})
+
+fastify.get('/admin/*', (request, reply) => {
+  reply.sendFile('admin/index.html')
+})
+
+fastify.get('/publications', (request, reply) => {
+  reply.sendFile('public/index.html')
+})
+
+fastify.get('/publications/*', (request, reply) => {
+  reply.sendFile('public/index.html')
 })
 
 fastify.get('/apiv1/teachers', (req, reply) => {
