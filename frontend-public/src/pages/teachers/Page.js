@@ -7,7 +7,7 @@ export default async function Teachers() {
 
   const teachersElements = teachers.map(teacher => TeacherName(teacher)).join('\n')
   return `
-  ${BreadCrumbs([{ type: 'ref', href: '/public/teachers', text: 'Преподаватели' }])}
-  <div>${teachersElements}</div>
+    ${BreadCrumbs([{ type: 'ref', href: '/public/teachers', text: 'Преподаватели' }])}
+    <div>${teachersElements}</div>
   `
 }

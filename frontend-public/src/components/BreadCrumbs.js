@@ -11,5 +11,6 @@ export default function BreadCrumbs(crumbs) {
         }
         return `<span>/</span><span>${crumb.text}</span>`
       }).join('')}
+    </div>
   `
 }

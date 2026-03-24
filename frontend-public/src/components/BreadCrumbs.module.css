@@ -1,6 +1,10 @@
 .breadcrumbs {
-  gap: 8px;
+  padding: 5px;
   font-size: 0.85rem;
+}
+
+.breadcrumbs > * {
+  margin-right: 10px;
 }
 
 .breadcrumbs a {
@@ -13,5 +17,5 @@
 }
 
 .breadcrumbs span {
-  color: #999;
+  color: #0066cc;
 }
