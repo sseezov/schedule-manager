@@ -10,4 +10,8 @@ export const init = () => {
       handlers[id]()
     }
   })
+  document.querySelector('#app').addEventListener('submit', (e) => {
+    e.preventDefault()
+    console.log(e)
+  })
 }

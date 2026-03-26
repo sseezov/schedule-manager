@@ -1,21 +1,9 @@
 import { handlers } from '../../core/init'
-import Modal from '../../../src/components/ui/Modal'
+import CrudModal from '../../components/ui/CrudModal'
 import styles from './Page.module.css'
+import { fetchTeachers } from '../../lib/data'
 
 export default async function Page() {
-  async function fetchTeachers() {
-    try {
-      const response = await fetch('/apiv1/teachers')
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-      const data = await response.json()
-      return data
-    }
-    catch (error) {
-      console.error('Fetch error:', error)
-    }
-  }
   const teachers = await fetchTeachers()
 
   const onClick = () => {
@@ -24,6 +12,12 @@ export default async function Page() {
   }
   const id = handlers.getId()
   handlers[id] = onClick
+
+  const formFields = [
+    { text: 'ФИО', type: 'text', id: 'teachers-form-fio' },
+    { text: 'Сокращение', type: 'text', id: 'teachers-form-abbreviation' },
+    { text: 'Должность', type: 'text', id: 'teachers-form-position' },
+  ]
 
   return `
   <h1 class="${styles.title}">Преподаватели</h1>
@@ -46,6 +40,6 @@ export default async function Page() {
       </tbody>
     </table>
     <button data-id=${id}>Добавить преподавателя</button>
-  ${Modal('modal-teachers')}
+    ${CrudModal('modal-teachers', formFields)}
     `
 }
