@@ -1,4 +1,4 @@
-import { handlers } from '../../core/init'
+import { registerHandler } from '../../core/init'
 import CrudModal from '../../components/ui/CrudModal'
 import styles from './Page.module.css'
 import { fetchTeachers } from '../../lib/data'
@@ -10,8 +10,7 @@ export default async function Page() {
     const modal = document.querySelector('.modal-teachers')
     modal.classList.remove('hidden')
   }
-  const id = handlers.getId()
-  handlers[id] = onClick
+  const id = registerHandler(onClick)
 
   const formFields = [
     { text: 'ФИО', type: 'text', id: 'teachers-form-fio' },
