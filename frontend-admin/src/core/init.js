@@ -10,15 +10,16 @@ export const registerHandler = (handler) => {
 }
 
 export const init = () => {
-  const app = document.querySelector('#app')
   const handle = (e) => {
-    e.preventDefault()
     const { id } = e.target.dataset
-    if (id) {
-      handlers[id]()
+    if (e.type === 'submit') {
+      e.preventDefault()
+    }
+    if (handlers[id]) {
+      handlers[id](e)
     }
   }
 
-  app.addEventListener('click', handle)
-  app.addEventListener('submit', handle)
+  document.addEventListener('click', handle)
+  document.addEventListener('submit', handle)
 }

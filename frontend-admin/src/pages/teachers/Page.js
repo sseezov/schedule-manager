@@ -1,7 +1,7 @@
 import { registerHandler } from '../../core/init'
-import CrudModal from '../../components/ui/CrudModal'
 import styles from './Page.module.css'
 import { fetchTeachers } from '../../lib/data'
+import TeachersCrudModal from './components/TeachersCrudModal'
 
 export default async function Page() {
   const teachers = await fetchTeachers()
@@ -11,12 +11,6 @@ export default async function Page() {
     modal.classList.remove('hidden')
   }
   const id = registerHandler(onClick)
-
-  const formFields = [
-    { text: 'ФИО', type: 'text', id: 'teachers-form-fio' },
-    { text: 'Сокращение', type: 'text', id: 'teachers-form-abbreviation' },
-    { text: 'Должность', type: 'text', id: 'teachers-form-position' },
-  ]
 
   return `
   <h1 class="${styles.title}">Преподаватели</h1>
@@ -39,6 +33,6 @@ export default async function Page() {
       </tbody>
     </table>
     <button data-id=${id}>Добавить преподавателя</button>
-    ${CrudModal('modal-teachers', formFields)}
+    ${TeachersCrudModal()}
     `
 }
