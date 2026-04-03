@@ -10,10 +10,10 @@ export async function createTeacher(data) {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
-    const result = await response.json()
-    return result
+    return await response.json()
+    // return { type: 'success', message: 'Преподаватель успешно создан!' }
   }
   catch (error) {
-    console.error('Fetch error:', error)
+    return { type: 'error', message: error.message }
   }
 }

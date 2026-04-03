@@ -80,7 +80,7 @@ html, body {
   background-color: #10b981;
 }
 
-.flash-message.danger {
+.flash-message.error {
   background-color: #ef4444;
 }
 
