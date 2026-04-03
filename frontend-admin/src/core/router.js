@@ -1,8 +1,8 @@
-import Calls from '../pages/calls/Page'
-import Classes from '../pages/classes/Page'
-import Groups from '../pages/groups/Page'
-import Subjects from '../pages/subjects/Page'
-import Teachers from '../pages/teachers/Page'
+import Calls from '../pages/calls/Page.jsx'
+import Classes from '../pages/classes/Page.jsx'
+import Groups from '../pages/groups/Page.jsx'
+import Subjects from '../pages/subjects/Page.jsx'
+import Teachers from '../pages/teachers/Page.jsx'
 
 export default {
   routes: {

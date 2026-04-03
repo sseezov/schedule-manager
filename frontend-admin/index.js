@@ -1,4 +1,4 @@
-import App from './src/App.js'
+import App from './src/App.jsx'
 import { init } from './src/core/init.js'
 import render from './src/core/render.js'
 

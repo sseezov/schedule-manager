@@ -16,4 +16,8 @@ export default defineConfig({
       },
     },
   },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxInject: `import { h } from '/h.js'`,
+  },
 })
