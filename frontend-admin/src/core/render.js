@@ -1,3 +1,3 @@
-export default async function (element, content) {
-  element.innerHTML = await content
+export default async function (parentSelector, content) {
+  document.querySelector(parentSelector).innerHTML = await content
 }

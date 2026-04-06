@@ -16,7 +16,7 @@ export default function TeachersCrudModal() {
     const result = await createTeacher(data)
     handlers.closeModal()
     handlers.showFlashMessage(result)
-    render(document.querySelector('#main'), <Page/>)
+    render('#main', <Page/>)
   }
 
   const id = registerHandler(onSubmit)

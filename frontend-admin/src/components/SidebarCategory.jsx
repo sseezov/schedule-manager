@@ -6,7 +6,7 @@ export default function SidebarCategory({ text }) {
   const content = Router.getRoute(text)
 
   const onClick = async () => {
-    render(document.querySelector('#main'), await content)
+    render('#main', content)
   }
   const id = registerHandler(onClick)
 
