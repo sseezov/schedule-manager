@@ -23,6 +23,7 @@ fastify.register(fastifyStatic, {
 
 fastify.register(async (fastify) => {
   await fastify.register(import('./routes/teachers.js'), { prefix: '/apiv1' })
+  await fastify.register(import('./routes/bells.js'), { prefix: '/apiv1' })
   // await fastify.register(import('./routes/subjects.js'), { prefix: '/apiv1' })
   await fastify.register(import('./routes/groups.js'), { prefix: '/apiv1' })
 })

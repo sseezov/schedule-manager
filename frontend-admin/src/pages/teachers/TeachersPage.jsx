@@ -7,10 +7,7 @@ import TeachersTable from './components/TeachersTable'
 
 export default async function TeachersPage() {
   const teachers = await fetchTeachers()
-  const showModalCreateTeacher = () => {
-    handlers.openModal('createTeacher')
-  }
-
+  const showModalCreateTeacher = () => handlers.openModal('createTeacher')
   const idCreate = registerClick(showModalCreateTeacher)
 
   return (
