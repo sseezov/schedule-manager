@@ -22,7 +22,7 @@ export default function UpdateGroupForm({ closeId, teacher }) {
   const formId = registerSubmit(onSubmit)
 
   return (
-    <form class={styles.modal} data-id={formId} id="updateTeacherForm">
+    <form class={styles.modal} data-handler={formId} id="updateTeacherForm">
       <h3>Редактировать преподавателя</h3>
       <input type="text" name="fio" placeholder="ФИО" required value={teacher.name}/>
       <input type="text" name="abbr" placeholder="Сокращение" required value={teacher.fio}/>

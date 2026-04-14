@@ -1,5 +1,5 @@
 import styles from './TeacherForm.module.css'
-import { handlers, registerSubmit } from '../../../core/handlers'
+import { handlers } from '../../../core/handlers'
 import { updateTeacher } from '../../../api/teachers'
 import render from '../../../core/render'
 import TeachersPage from '../TeachersPage'
@@ -19,10 +19,8 @@ export default function UpdateTeacherForm({ closeId, teacher }) {
     render('#main', <TeachersPage />)
   }
 
-  const formId = registerSubmit(onSubmit)
-
   return (
-    <form class={styles.modal} data-id={formId} id="updateTeacherForm">
+    <form class={styles.modal} onSubmit={onSubmit} id="updateTeacherForm">
       <h3>Редактировать преподавателя</h3>
       <input type="text" name="fio" placeholder="ФИО" required value={teacher.name}/>
       <input type="text" name="abbr" placeholder="Сокращение" required value={teacher.fio}/>

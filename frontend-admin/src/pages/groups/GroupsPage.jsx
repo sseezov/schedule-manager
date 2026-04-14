@@ -7,14 +7,13 @@ import GroupsTable from './components/GroupTable'
 
 export default async function GroupsPage() {
   const groups = await fetchGroups()
-  const showModalCreateTeacher = () => handlers.openModal('createGroup')
-  const idCreate = registerClick(showModalCreateTeacher)
+  const showModalCreateGroup = () => handlers.openModal('createGroup')
 
   return (
     <div>
       <PageTitle title="Группы" />
       <GroupsTable groups={groups}/>
-      <button data-id={idCreate}>Добавить группу</button>
+      <button onClick={showModalCreateGroup}>Добавить группу</button>
       <Modal modalId="createGroup">
         <CreateGroupForm closeId="createGroup"/>
       </Modal>

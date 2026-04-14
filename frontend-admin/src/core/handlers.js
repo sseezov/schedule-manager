@@ -34,17 +34,17 @@ export const registerSubmit = (handler) => {
 
 export const initHandlers = () => {
   const handleClick = (e) => {
-    const { id } = e.target.dataset
-    if (handlers.click[id]) {
-      handlers.click[id](e)
+    const { handler } = e.target.dataset
+    if (handlers.click[handler]) {
+      handlers.click[handler](e)
     }
   }
 
   const handleSubmit = (e) => {
-    const { id } = e.target.dataset
+    const { handler } = e.target.dataset
     e.preventDefault()
-    if (handlers.submit[id]) {
-      handlers.submit[id](e)
+    if (handlers.submit[handler]) {
+      handlers.submit[handler](e)
     }
   }
 

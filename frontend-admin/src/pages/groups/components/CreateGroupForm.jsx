@@ -21,7 +21,7 @@ export default function CreateGroupForm({ closeId }) {
   const formId = registerSubmit(onSubmit)
 
   return (
-    <form class={styles.modal} data-id={formId}>
+    <form class={styles.modal} data-handler={formId}>
       <h3>Добавить группу</h3>
       <input type="text" name="name" placeholder="Название группы" required />
       <input type="text" name="year_of_admission" placeholder="Год поступления" required />

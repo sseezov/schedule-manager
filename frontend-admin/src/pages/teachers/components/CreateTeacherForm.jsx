@@ -21,7 +21,7 @@ export default function CreateTeacherForm({ closeId }) {
   const formId = registerSubmit(onSubmit)
 
   return (
-    <form class={styles.modal} data-id={formId}>
+    <form class={styles.modal} data-handler={formId}>
       <h3>Добавить преподавателя</h3>
       <input type="text" name="fio" placeholder="ФИО" required />
       <input type="text" name="abbr" placeholder="Сокращение" required />

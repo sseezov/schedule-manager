@@ -1,7 +1,7 @@
 import { deleteTeacher } from "../../../api/teachers";
 import ConfirmForm from "../../../components/shared/ConfirmForm";
 import Modal from "../../../components/shared/Modal";
-import { handlers, registerClick } from "../../../core/handlers"
+import { handlers } from "../../../core/handlers"
 import render from "../../../core/render";
 import TeachersPage from "../TeachersPage";
 import styles from "./TeachersTable.module.css"
@@ -33,9 +33,6 @@ export default function TeachersTable({ teachers }) {
     handlers.openModal('deleteTeacher')
   }
 
-  const idUpdate = registerClick(showModalUpdateTeacher)
-  const idDelete = registerClick(showModalDeleteTeacher)
-
   return (
     <div>
       <table class={styles.table}>
@@ -56,8 +53,8 @@ export default function TeachersTable({ teachers }) {
               <td>{teacher.fio}</td>
               <td>{teacher.position}</td>
               <td>{teacher.color}</td>
-              <td><button teacherId={teacher.id} data-id={idUpdate}>Редактировать</button></td>
-              <td><button teacherId={teacher.id} data-id={idDelete}>Удалить</button></td>
+              <td><button teacherId={teacher.id} onClick={showModalUpdateTeacher}>Редактировать</button></td>
+              <td><button teacherId={teacher.id} onClick={showModalDeleteTeacher}>Удалить</button></td>
             </tr>
           ))}
         </tbody>
