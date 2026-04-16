@@ -1,6 +1,7 @@
 import { registerClick, registerSubmit } from './handlers'
 
-export function h(tag, props = {}, ...children) {
+export function h(tag, props, ...children) {
+  // Регистрируем обработчики
   if (props) {
     if (props['onClick']) {
       const handlerId = registerClick(props['onClick'])

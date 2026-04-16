@@ -1,5 +1,5 @@
 import styles from './TeacherForm.module.css'
-import { handlers, registerSubmit } from '../../../core/handlers'
+import { handlers } from '../../../core/handlers'
 import { createTeacher } from '../../../api/teachers'
 import render from '../../../core/render'
 import TeachersPage from '../TeachersPage'
@@ -18,10 +18,8 @@ export default function CreateTeacherForm({ closeId }) {
     render('#main', <TeachersPage />)
   }
 
-  const formId = registerSubmit(onSubmit)
-
   return (
-    <form class={styles.modal} data-handler={formId}>
+    <form class={styles.modal} onSubmit={onSubmit}>
       <h3>Добавить преподавателя</h3>
       <input type="text" name="fio" placeholder="ФИО" required />
       <input type="text" name="abbr" placeholder="Сокращение" required />

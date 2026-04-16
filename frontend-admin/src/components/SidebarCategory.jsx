@@ -1,8 +1,5 @@
-import Router from '../core/router'
-import render from '../core/render'
-
-export default function SidebarCategory({ text }) {
-  const content = Router.getRoute(text)
-
-  return <li onClick={() => render('#main', content)}>{text}</li>
+export default function SidebarCategory({ text, href }) {
+  return <li>
+    <a href={href}>{text}</a>
+  </li>
 }
