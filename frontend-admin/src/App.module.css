@@ -4,3 +4,12 @@
   min-height: 100vh;
 }
 
+.sidebarContainer {
+  width: 25%;
+  max-width: 300px;
+  min-width: 200px;
+  background-color: #1e2b3a;
+  color: #ecf0f1;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+

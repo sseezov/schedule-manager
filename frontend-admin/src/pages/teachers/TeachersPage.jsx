@@ -10,13 +10,13 @@ export default async function TeachersPage() {
   const showModalCreateTeacher = () => handlers.openModal('createTeacher')
 
   return (
-    <div>
+    <>
       <PageTitle title="Преподаватели" />
       <TeachersTable teachers={teachers} />
       <button onClick={showModalCreateTeacher}>Добавить преподавателя</button>
       <Modal modalId="createTeacher">
         <CreateTeacherForm closeId="createTeacher" />
       </Modal>
-    </div>
+    </>
   )
 }

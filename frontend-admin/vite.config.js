@@ -21,6 +21,7 @@ export default defineConfig({
   },
   esbuild: {
     jsxFactory: 'h',
-    jsxInject: `import { h } from '/src/core/h.js'`,
+    jsxInject: `import { h, Fragment } from '/src/core/h.js'`,
+    jsxFragment: 'Fragment',
   },
 })

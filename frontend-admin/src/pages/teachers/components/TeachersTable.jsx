@@ -34,7 +34,7 @@ export default function TeachersTable({ teachers }) {
   }
 
   return (
-    <div>
+    <>
       <table class={styles.table}>
         <thead>
           <tr>
@@ -65,6 +65,6 @@ export default function TeachersTable({ teachers }) {
       <Modal modalId="deleteTeacher">
         <ConfirmForm message="Подтвердите удаление преподавателя" onConfirm={onConfirm} onCancel={onCancel} />
       </Modal>
-    </div>
+    </>
   )
 }

@@ -5,7 +5,9 @@ import styles from './App.module.css'
 export default function App() {
   return (
     <div class={styles.container}>
-      <Sidebar />
+      <div id='sidebar-container' class={styles.sidebarContainer}>
+        <Sidebar />
+      </div>
       <Main />
       <div class="flash-message"></div>
     </div>
