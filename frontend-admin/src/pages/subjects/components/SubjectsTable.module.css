@@ -1,0 +1,61 @@
+/* SubjectsTable.module.css */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+  background-color: #f1f5f9;
+}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.table button {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.table button:first-child {
+  background-color: #3b82f6;
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.table button:first-child:hover {
+  background-color: #2563eb;
+}
+
+.table button:last-child {
+  background-color: #ef4444;
+  color: white;
+}
+
+.table button:last-child:hover {
+  background-color: #dc2626;
+}

@@ -18,7 +18,6 @@ export default async function teachersRoutes(fastify) {
   });
 
   fastify.put('/groups', async (req, reply) => {
-    console.log(111, req.body);
     const id = req.body;
     const result = await updateGroup(fastify, id);
     reply.status(201).send(result);
