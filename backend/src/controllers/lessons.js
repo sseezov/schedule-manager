@@ -25,6 +25,18 @@ export const getLessons = async (fastify) => {
       ORDER BY l.group_id, l.weekday, l.lesson_number
     `);
 
+    // Получаем информацию о расписании (schedules)
+    const { rows: schedules } = await client.query(`
+      SELECT 
+        id,
+        name,
+        created,
+        lessons_in_day as "lessonsInDay",
+        weekdays
+      FROM schedules
+      ORDER BY id
+    `);
+
     // Получаем все группы
     const { rows: groups } = await client.query(`
       SELECT id, name, abbreviation as "abbreviation"
@@ -48,6 +60,7 @@ export const getLessons = async (fastify) => {
 
     return {
       lessons,
+      schedules,
       groups,
       subjects,
       teachers,

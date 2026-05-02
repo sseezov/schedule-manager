@@ -1,5 +1,15 @@
-export default function LessonsTable() {
+export default function LessonsTable({ data }) {
+  const { groups, lessons, teachers, subjects } = data;
+  console.log(data);
   return (
-    <div>LessonsTable</div>
+    <table>
+      <thead>
+
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
   )
 }

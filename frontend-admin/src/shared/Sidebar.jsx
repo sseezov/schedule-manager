@@ -14,6 +14,7 @@ export default function Sidebar() {
 
   return (
     <ol class={styles.sidebar}>
+      <SidebarCategory text="Расписания" handler={(e) => handleClick(e, "/admin/schedules")} isActive={pathname === "/admin/schedules"} />
       <SidebarCategory text="Сетка уроков" handler={(e) => handleClick(e, "/admin/lessons")} isActive={pathname === "/admin/lessons"} />
       <SidebarCategory text="Звонки" handler={(e) => handleClick(e, "/admin/bells")} isActive={pathname === "/admin/bells"} />
       <SidebarCategory text="Группы" handler={(e) => handleClick(e, "/admin/groups")} isActive={pathname === "/admin/groups"} />

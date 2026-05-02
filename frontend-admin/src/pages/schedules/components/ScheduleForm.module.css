@@ -1,0 +1,46 @@
+/* pages/schedules/components/ScheduleForm.module.css */
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  min-width: 400px;
+}
+
+.modal h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.modal input[type="text"],
+.modal input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.weekdays {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.weekdays label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.modal button[type="submit"] {
+  padding: 0.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.modal button[type="submit"]:hover {
+  background: #2563eb;
+}
