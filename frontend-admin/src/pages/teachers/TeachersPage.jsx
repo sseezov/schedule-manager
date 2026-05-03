@@ -13,15 +13,17 @@ export default async function TeachersPage() {
 
   return (
     <>
-      <div class='content'>
-        <PageTitle title="Преподаватели" />
+      <div class={`content ${styles.crudPage}`}>
+        <div class={styles.crudHeader}>
+          <PageTitle title="Преподаватели" />
+          <button
+            class={styles.addButton}
+            onClick={showModalCreateTeacher}
+          >
+            Добавить преподавателя
+          </button>
+        </div>
         <TeachersTable teachers={teachers} />
-        <button
-          class={styles.addButton}
-          onClick={showModalCreateTeacher}
-        >
-          + Добавить преподавателя
-        </button>
       </div>
       <Modal modalId="createTeacher">
         <CreateTeacherForm closeId="createTeacher" />

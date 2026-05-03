@@ -14,11 +14,12 @@ export default async function GroupsPage() {
 
   return (
     <>
-      <div class="content">
-
-        <PageTitle title="Группы" />
+      <div class={`content ${styles.crudPage}`}>
+        <div class={styles.crudHeader}>
+          <PageTitle title="Группы" />
+          <button class={styles.addButton} onClick={showModalCreateGroup}>Добавить группу</button>
+        </div>
         <GroupsTable groups={groups} />
-        <button class={styles.addButton} onClick={showModalCreateGroup}>Добавить группу</button>
         <Modal modalId="createGroup">
           <CreateGroupForm closeId="createGroup" />
         </Modal>

@@ -12,15 +12,17 @@ export default async function SubjectsPage() {
 
   return (
     <>
-      <div class='content'>
-        <PageTitle title="Предметы" />
+      <div class={`content ${styles.crudPage}`}>
+        <div class={styles.crudHeader}>
+          <PageTitle title="Предметы" />
+          <button
+            class={styles.addButton}
+            onClick={showModalCreateSubject}
+          >
+            Добавить предмет
+          </button>
+        </div>
         <SubjectsTable subjects={subjects} />
-        <button
-          class={styles.addButton}
-          onClick={showModalCreateSubject}
-        >
-          + Добавить предмет
-        </button>
       </div>
       <Modal modalId="createSubject">
         <CreateSubjectForm closeId="createSubject" />
