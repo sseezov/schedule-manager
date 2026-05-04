@@ -19,6 +19,13 @@ export const groupsQueries = {
   delete: 'DELETE FROM groups WHERE id = $1',
 };
 
+export const classesQueries = {
+  getAll: 'SELECT id, name, abbreviation, capacity, building FROM classes ORDER BY id',
+  create: 'INSERT INTO classes (name, abbreviation, capacity, building) VALUES ($1, $2, $3, $4) RETURNING *',
+  update: 'UPDATE classes SET name = $1, abbreviation = $2, capacity = $3, building = $4 WHERE id = $5 RETURNING *',
+  delete: 'DELETE FROM classes WHERE id = $1',
+};
+
 export const subjectsQueries = {
   getAll: 'SELECT * FROM subjects ORDER BY name',
   create: 'INSERT INTO subjects (name, abbreviation) VALUES ($1, $2)',
