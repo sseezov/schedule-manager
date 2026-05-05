@@ -103,7 +103,6 @@ html, body {
 
 .content {
   flex: 1;
-  padding: 2rem;
   background-color: #f8fafc;
   overflow-y: auto;
 }

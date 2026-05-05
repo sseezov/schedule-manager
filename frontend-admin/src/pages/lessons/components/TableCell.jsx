@@ -7,7 +7,7 @@ export default function TableCell({ lessonsInDay }) {
     <td>
       <div class={styles.pairsContainer}>
         {pairsInDay.map((lessons) => (
-          <div class={styles.pairSlot}>1</div>
+          <div class={styles.pairSlot}></div>
         ))}
       </div>
     </td>
