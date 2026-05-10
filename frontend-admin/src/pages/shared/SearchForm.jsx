@@ -7,6 +7,7 @@ export default function SearchForm({ searchPlaceholder, onSearch }) {
     const query = String(formData.get('query') ?? '').trim()
 
     onSearch(query)
+    event.target.querySelector('input').focus();
   }
 
   return (
