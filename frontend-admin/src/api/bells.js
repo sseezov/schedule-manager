@@ -1,6 +1,6 @@
 async function fetchBellsByScheduleId(scheduleId) {
   try {
-    const response = await fetch(`/apiv1/bells/schedule/${scheduleId}`);
+    const response = await fetch(`/apiv1/bells/${scheduleId}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -14,7 +14,7 @@ async function fetchBellsByScheduleId(scheduleId) {
 
 async function updateBellsByScheduleId(scheduleId, bells) {
   try {
-    const response = await fetch(`/apiv1/bells/schedule/${scheduleId}`, {
+    const response = await fetch(`/apiv1/bells/${scheduleId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
