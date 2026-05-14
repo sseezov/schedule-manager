@@ -1,6 +1,6 @@
 import { fetchLessonsByScheduleId } from '../../api/lessons';
 import Modal from '../../shared/Modal';
-import CreateLessonsForm from './components/CreateLessonsForm';
+import CreatePairForm from './components/CreatePairForm';
 import LessonsTable from './components/table/LessonsTable';
 import PairSection from './components/pairSection/PairSection';
 import styles from './LessonsPage.module.css'
@@ -9,8 +9,8 @@ import InfoSection from './components/InfoSection';
 export default async function LessonsPage() {
   const { pathname } = new URL(window.location.href)
   const [, , , scheduleId] = pathname.split('/')
-  const test = await fetchLessonsByScheduleId(scheduleId);
-  const { schedule, lessons, groups, subjects, teachers } = test;
+  const lessonsBySchedule = await fetchLessonsByScheduleId(scheduleId);
+  const { schedule, lessons, groups, subjects, teachers } = lessonsBySchedule;
 
   if (!schedule) {
     return <div>Расписание не найдено</div>;
@@ -41,7 +41,7 @@ export default async function LessonsPage() {
         </div>
       </div>
       <Modal modalId="createLesson">
-        <CreateLessonsForm teachers={teachers} groups={groups} subjects={subjects} scheduleId={scheduleId} />
+        <CreatePairForm teachers={teachers} groups={groups} subjects={subjects} scheduleId={scheduleId} />
       </Modal>
     </div>
   );

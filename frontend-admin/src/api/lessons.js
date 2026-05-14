@@ -13,7 +13,7 @@ async function fetchLessonsByScheduleId(scheduleId) {
   }
 }
 
-async function createLessons(data) {
+async function createPair(data) {
   try {
     const response = await fetch('/apiv1/lessons', {
       method: 'POST',
@@ -31,7 +31,7 @@ async function createLessons(data) {
   }
 }
 
-async function deleteLesson(lessonId) {
+async function deletePair(lessonId) {
   try {
     const response = await fetch('/apiv1/lessons', {
       method: 'DELETE',
@@ -49,4 +49,4 @@ async function deleteLesson(lessonId) {
   }
 }
 
-export { fetchLessonsByScheduleId, createLessons, deleteLesson };
+export { fetchLessonsByScheduleId, createPair, deletePair };

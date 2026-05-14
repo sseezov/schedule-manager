@@ -31,7 +31,7 @@ export default function LessonsTable({ groups, schedule }) {
           <tr class={selectedGroup === group.id ? 'selectedGroup' : ''}>
             <td>{group.name}</td>
             {weekdays.map((day, idx) => (
-              <TableCell lessonsInDay={lessonsInDay} />
+              <TableCell lessonsInDay={lessonsInDay} group={group} />
             ))}
           </tr>
         ))}

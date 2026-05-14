@@ -2,9 +2,9 @@ import styles from '../../pages.module.css'
 import { render } from '../../../core/render'
 import { ui } from '../../../utils/dom'
 import LessonsPage from '../LessonsPage';
-import { createLessons } from '../../../api/lessons';
+import { createPair } from '../../../api/lessons';
 
-export default function CreateLessonsForm({ groups, teachers, subjects, scheduleId }) {
+export default function CreatePairForm({ groups, teachers, subjects, scheduleId }) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -16,8 +16,7 @@ export default function CreateLessonsForm({ groups, teachers, subjects, schedule
       lessonsCount: formData.get('lessonsCount'),
       scheduleId: scheduleId
     }
-    console.log(data);
-    const result = await createLessons(data)
+    const result = await createPair(data)
     ui.closeModal()
     ui.showFlashMessage(result)
     render('#main', <LessonsPage />)
