@@ -19,6 +19,6 @@ const routes = [
   { path: '/admin/schedules', component: SchedulesPage, parentSelector: '#main' },
 ];
 
-const errorRoute = [{ component: ErrorPage, parentSelector: '#app' }];
+const errorComponent = { component: ErrorPage, parentSelector: '#app' };
 
-initWood(App, routes, errorRoute);
+initWood(App, routes, errorComponent);
