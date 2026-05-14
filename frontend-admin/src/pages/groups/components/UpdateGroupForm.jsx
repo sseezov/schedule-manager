@@ -11,7 +11,7 @@ export default function UpdateGroupForm({ group }) {
     const data = {
       name: formData.get('name'),
       abbreviation: formData.get('abbreviation'),
-      year_of_admission: formData.get('year_of_admission'),
+      yearOfAdmission: formData.get('yearOfAdmission'),
       id: group.id,
     }
     const result = await updateGroup(data)
@@ -24,7 +24,7 @@ export default function UpdateGroupForm({ group }) {
     <form class={styles.form} onSubmit={onSubmit} id="updateGroupForm">
       <h3>Редактировать группу</h3>
       <input type="text" name="name" placeholder="ФИО" required value={group.name} />
-      <input type="text" name="year_of_admission" placeholder="Сокращение" required value={group.year_of_admission} />
+      <input type="text" name="yearOfAdmission" placeholder="Сокращение" required value={group.yearOfAdmission} />
       <input type="text" name="abbreviation" placeholder="Должность" value={group.abbreviation} />
       <button type="submit">Редактировать</button>
     </form>

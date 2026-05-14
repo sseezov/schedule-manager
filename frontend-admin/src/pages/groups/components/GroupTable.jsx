@@ -17,7 +17,7 @@ export default function GroupsTable({ groups, onEdit, onDelete }) {
           {groups.map(group => (
             <tr>
               <td>{group.name}</td>
-              <td>{group.year_of_admission}</td>
+              <td>{group.yearOfAdmission}</td>
               <td>{group.abbreviation}</td>
               <td><button class={`${styles.tableActionButton} ${styles.tableEditButton}`} onClick={() => onEdit(group)}>Редактировать</button></td>
               <td><button class={`${styles.tableActionButton} ${styles.tableDeleteButton}`} onClick={() => onDelete(group)}>Удалить</button></td>

@@ -16,7 +16,7 @@ export const createGroup = async (fastify, data) => {
   try {
     await client.query(groupsQueries.create, [
       data.name,
-      data.year_of_admission,
+      data.yearOfAdmission,
       data.abbreviation,
     ]);
     return { message: 'Группа добавлена!' };
@@ -32,7 +32,7 @@ export const updateGroup = async (fastify, data) => {
     await client.query(groupsQueries.update, [
       data.name,
       data.abbreviation,
-      data.year_of_admission,
+      data.yearOfAdmission,
       data.id,
     ]);
     return { message: 'Данные группы обновлены!' };

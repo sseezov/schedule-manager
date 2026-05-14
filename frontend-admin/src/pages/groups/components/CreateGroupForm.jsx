@@ -11,7 +11,7 @@ export default function CreateGroupForm() {
     const data = {
       name: formData.get('name'),
       abbreviation: formData.get('abbreviation'),
-      year_of_admission: formData.get('year_of_admission'),
+      yearOfAdmission: formData.get('yearOfAdmission'),
     }
     const result = await createGroup(data)
     ui.closeModal()
@@ -23,7 +23,7 @@ export default function CreateGroupForm() {
     <form class={styles.form} onSubmit={onSubmit}>
       <h3>Добавить группу</h3>
       <input type="text" name="name" placeholder="Название группы" required />
-      <input type="text" name="year_of_admission" placeholder="Год поступления" required />
+      <input type="text" name="yearOfAdmission" placeholder="Год поступления" required />
       <input type="text" name="abbreviation" placeholder="Сокращение" />
       <button type="submit">Добавить</button>
     </form>
