@@ -13,9 +13,8 @@ lint:
 
 lint-fix:
 	npx eslint . --fix
-	npx stylelint "frontend-admin/src/**/*.css" --fix
-	npx stylelint "frontend-public/src/**/*.css" --fix
+	npx stylelint "frontend-admin/globals.css" "frontend-admin/src/**/*.css" --fix
+	npx stylelint "frontend-public/globals.css" "frontend-public/src/**/*.css" --fix
 
 pre-push: lint-fix
 	@echo "✅ lint checks passed"
-

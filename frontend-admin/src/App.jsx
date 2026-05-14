@@ -16,7 +16,7 @@ export default function App() {
       </aside>
       <main id="main" class="container">
       </main>
-      <div class="flash-message"></div>
+      <div class="flashMessage"></div>
       <ContextMenu />
     </>
   )

@@ -8,7 +8,7 @@ export const ui = {
   },
 
   showFlashMessage: ({ type, message }) => {
-    const flashContainer = document.querySelector('.flash-message');
+    const flashContainer = document.querySelector('.flashMessage');
     if (!flashContainer) return;
 
     flashContainer.innerHTML = message;
