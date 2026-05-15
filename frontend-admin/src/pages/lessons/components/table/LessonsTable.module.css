@@ -20,7 +20,7 @@
 
 .table th:not(:first-child),
 .table td:not(:first-child) {
-  width: calc((100% - 100px) / var(--weekdays-count, 7)); /* Равномерное распределение */
+  width: calc((100% - 100px) / var(--weekdaysCount, 7)); /* Равномерное распределение */
 }
 
 .pairsContainer {
