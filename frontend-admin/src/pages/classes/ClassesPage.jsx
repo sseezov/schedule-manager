@@ -15,7 +15,7 @@ export default async function ClassesPage() {
   const showModalCreateClass = () => ui.openModal('createClass')
 
   const openUpdateClassModal = (classItem) => {
-    render('#updateClass-content', <UpdateClassForm closeId="updateClass" classItem={classItem} />)
+    render('#updateClassContent', <UpdateClassForm closeId="updateClass" classItem={classItem} />)
     ui.openModal('updateClass')
   }
 
@@ -28,7 +28,7 @@ export default async function ClassesPage() {
 
   const openDeleteClassModal = (classItem) => {
     render(
-      '#deleteClass-content',
+      '#deleteClassContent',
       <ConfirmForm
         message="Подтвердите удаление аудитории"
         onConfirm={() => handleDeleteClass(classItem.id)}

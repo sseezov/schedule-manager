@@ -33,7 +33,7 @@ export default async function BellsPage() {
   }
 
   const openEditBellsModal = () => {
-    render('#editBells-content', <BellsForm bells={bellRows} onSave={handleSaveBells} />)
+    render('#editBellsContent', <BellsForm bells={bellRows} onSave={handleSaveBells} />)
     ui.openModal('editBells')
   }
 

@@ -15,7 +15,7 @@ export default async function SubjectsPage() {
   const showModalCreateSubject = () => ui.openModal('createSubject')
 
   const openUpdateSubjectModal = (subject) => {
-    render('#updateSubject-content', <UpdateSubjectForm closeId="updateSubject" subject={subject} />)
+    render('#updateSubjectContent', <UpdateSubjectForm closeId="updateSubject" subject={subject} />)
     ui.openModal('updateSubject')
   }
 
@@ -28,7 +28,7 @@ export default async function SubjectsPage() {
 
   const openDeleteSubjectModal = (subject) => {
     render(
-      '#deleteSubject-content',
+      '#deleteSubjectContent',
       <ConfirmForm
         message="Подтвердите удаление предмета"
         onConfirm={() => handleDeleteSubject(subject.id)}

@@ -15,7 +15,7 @@ export default async function SchedulesPage() {
   const showModalCreateSchedule = () => ui.openModal('createSchedule')
 
   const openUpdateScheduleModal = (schedule) => {
-    render('#updateSchedule-content', <UpdateScheduleForm closeId="updateSchedule" schedule={schedule} />)
+    render('#updateScheduleContent', <UpdateScheduleForm closeId="updateSchedule" schedule={schedule} />)
     ui.openModal('updateSchedule')
   }
 
@@ -28,7 +28,7 @@ export default async function SchedulesPage() {
 
   const openDeleteScheduleModal = (schedule) => {
     render(
-      '#deleteSchedule-content',
+      '#deleteScheduleContent',
       <ConfirmForm
         message="Подтвердите удаление расписания"
         onConfirm={() => handleDeleteSchedule(schedule.id)}

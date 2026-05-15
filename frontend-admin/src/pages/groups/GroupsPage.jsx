@@ -16,7 +16,7 @@ export default async function GroupsPage() {
   const showModalCreateGroup = () => ui.openModal('createGroup')
 
   const openUpdateGroupModal = (group) => {
-    render('#updateGroup-content', <UpdateGroupForm closeId="updateGroup" group={group} />)
+    render('#updateGroupContent', <UpdateGroupForm closeId="updateGroup" group={group} />)
     ui.openModal('updateGroup')
   }
 
@@ -29,7 +29,7 @@ export default async function GroupsPage() {
 
   const openDeleteGroupModal = (group) => {
     render(
-      '#deleteGroup-content',
+      '#deleteGroupContent',
       <ConfirmForm
         message="Подтвердите удаление группы"
         onConfirm={() => handleDeleteGroup(group.id)}

@@ -16,7 +16,7 @@ export default async function TeachersPage() {
   const showModalCreateTeacher = () => ui.openModal('createTeacher')
 
   const openUpdateTeacherModal = (teacher) => {
-    render('#updateTeacher-content', <UpdateTeacherForm closeId="updateTeacher" teacher={teacher} />)
+    render('#updateTeacherContent', <UpdateTeacherForm closeId="updateTeacher" teacher={teacher} />)
     ui.openModal('updateTeacher')
   }
 
@@ -29,7 +29,7 @@ export default async function TeachersPage() {
 
   const openDeleteTeacherModal = (teacher) => {
     render(
-      '#deleteTeacher-content',
+      '#deleteTeacherContent',
       <ConfirmForm
         message="Подтвердите удаление преподавателя"
         onConfirm={() => handleDeleteTeacher(teacher.id)}
