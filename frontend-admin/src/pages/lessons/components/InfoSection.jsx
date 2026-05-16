@@ -1,12 +1,12 @@
-export default function InfoSection({ lesson }) {
-  if (!lesson) {
+export default function InfoSection({ workload }) {
+  if (!workload) {
     return <div></div>
   } else
     return (
       <div>
-        <div>{lesson.groupName}</div>
-        <div>{lesson.subjectName}</div>
-        <div>{lesson.teacherName}</div>
+        <div>{workload.groupName}</div>
+        <div>{workload.subjectName}</div>
+        <div>{workload.teacherName}</div>
       </div>
     )
 }

@@ -1,16 +1,19 @@
-import { fetchLessonsByScheduleId } from '../../api/lessons';
+import { fetchLessons } from '../../api/lessons';
 import Modal from '../../shared/Modal';
-import CreatePairForm from './components/CreatePairForm';
+import CreatePairForm from './components/CreateWorkload';
 import LessonsTable from './components/table/LessonsTable';
-import PairSection from './components/pairSection/PairSection';
+import WorkloadsSection from './components/workloadsSection/WorkloadsSection'
 import styles from './LessonsPage.module.css'
 import InfoSection from './components/InfoSection';
+import { fetchWorkloads } from '../../api/workloads';
 
 export default async function LessonsPage() {
   const { pathname } = new URL(window.location.href)
   const [, , , scheduleId] = pathname.split('/')
-  const lessonsBySchedule = await fetchLessonsByScheduleId(scheduleId);
-  const { schedule, lessons, groups, subjects, teachers } = lessonsBySchedule;
+  const scheduleData = await fetchLessons(scheduleId);
+  const workloads = await fetchWorkloads()
+  console.log(11, workloads);
+  const { schedule, lessons, groups, subjects, teachers } = scheduleData;
 
   if (!schedule) {
     return <div>Расписание не найдено</div>;
@@ -32,12 +35,10 @@ export default async function LessonsPage() {
 
       <div class={styles.bottomContainer}>
         <div id="infoSection" class={styles.leftPanel}>
-
           <InfoSection />
         </div>
         <div id="pairSection" class={styles.rightPanel}>
-
-          <PairSection lessons={lessons} />
+          <WorkloadsSection workloads={workloads} />
         </div>
       </div>
       <Modal modalId="createLesson">

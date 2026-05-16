@@ -3,28 +3,11 @@ import { lessonsQueries } from '../db/queries.js';
 export const getLessonsByScheduleId = async (fastify, scheduleId) => {
   const client = await fastify.pg.connect();
   try {
-    const { rows: lessons } = await client.query(`
-      SELECT 
-        l.id,
-        l.weekday,
-        l.classroom,
-        l.lessons_count as "lessonsCount",
-        l.group_id as "groupId",
-        g.name as "groupName",
-        g.abbreviation as "groupAbbr",
-        l.subject_id as "subjectId",
-        sub.name as "subjectName",
-        sub.abbreviation as "subjectAbbr",
-        l.teacher_id as "teacherId",
-        t.fio as "teacherName",
-        t.position as "teacherPosition"
-      FROM lessons l
-      JOIN groups g ON l.group_id = g.id
-      JOIN subjects sub ON l.subject_id = sub.id
-      JOIN teachers t ON l.teacher_id = t.id
-      WHERE l.schedule_id = $1
-      ORDER BY l.group_id, l.weekday
-    `, [scheduleId]);
+    // Получаем размещённые уроки через запрос из queries
+    const { rows: lessons } = await client.query(
+      lessonsQueries.getByScheduleId, 
+      [scheduleId]
+    );
 
     // Получаем информацию о расписании
     const { rows: scheduleInfo } = await client.query(`
@@ -33,7 +16,7 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
       WHERE id = $1
     `, [scheduleId]);
 
-    // Получаем все группы (для фильтра)
+    // Получаем все группы
     const { rows: groups } = await client.query(`
       SELECT id, name, abbreviation
       FROM groups
@@ -54,12 +37,33 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
       ORDER BY fio
     `);
 
+    // Получаем всю нагрузку (для левой панели)
+    const { rows: workloads } = await client.query(`
+      SELECT 
+        w.id,
+        w.group_id as "groupId",
+        g.name as "groupName",
+        g.abbreviation as "groupAbbr",
+        w.teacher_id as "teacherId",
+        t.fio as "teacherName",
+        w.subject_id as "subjectId",
+        s.name as "subjectName",
+        s.abbreviation as "subjectAbbr",
+        w.lessons_per_week as "lessonsPerWeek"
+      FROM workloads w
+      JOIN groups g ON w.group_id = g.id
+      JOIN teachers t ON w.teacher_id = t.id
+      JOIN subjects s ON w.subject_id = s.id
+      ORDER BY g.name, s.name
+    `);
+
     return {
       schedule: scheduleInfo[0],
       lessons,
       groups,
       subjects,
       teachers,
+      workloads,
     };
   }
   finally {
@@ -67,7 +71,6 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
   }
 };
 
-// Новые функции для CRUD нагрузки
 export const getLessons = async (fastify) => {
   const client = await fastify.pg.connect();
   try {
@@ -79,49 +82,15 @@ export const getLessons = async (fastify) => {
   }
 };
 
-export const createLesson = async (fastify, data) => {
-  console.log(1111, data);
+export const deleteLesson = async (fastify, scheduleLessonId) => {
   const client = await fastify.pg.connect();
   try {
-    const result = await client.query(lessonsQueries.create, [
-      data.groupId,
-      data.teacherId,
-      data.subjectId,
-      data.lessonsCount,
-      data.scheduleId,
-    ]);
-    return { message: 'Урок добавлен!', id: result.rows[0]?.id };
+    await client.query(lessonsQueries.delete, [scheduleLessonId]);
+    return { message: 'Урок удалён из расписания!' };
   }
   catch (error) {
-    console.error('Error creating lesson:', error);
-  }
-  finally {
-    client.release();
-  }
-};
-
-export const updateLesson = async (fastify, data) => {
-  const client = await fastify.pg.connect();
-  try {
-    await client.query(lessonsQueries.update, [
-      data.groupId,
-      data.teacherId,
-      data.subjectId,
-      data.lessonsCount,
-      data.id,
-    ]);
-    return { message: 'Урок обновлен!' };
-  }
-  finally {
-    client.release();
-  }
-};
-
-export const deleteLesson = async (fastify, lessonId) => {
-  const client = await fastify.pg.connect();
-  try {
-    await client.query(lessonsQueries.delete, [lessonId]);
-    return { message: 'Урок удален!' };
+    console.error('Error deleting schedule lesson:', error);
+    return { type: 'error', message: error.message };
   }
   finally {
     client.release();

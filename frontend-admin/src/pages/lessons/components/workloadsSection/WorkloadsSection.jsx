@@ -1,10 +1,9 @@
-import { render } from '../../../../core/render';
+import { fetchWorkloads } from '../../../../api/workloads';
 import { ui } from '../../../../utils/dom';
 import styles from '../../LessonsPage.module.css'
-import InfoSection from '../InfoSection';
-import Pair from './Pair';
+import Pair from './Workload';
 
-export default function PairSection({ lessons }) {
+export default function WorkloadsSection({workloads}) {
   const showModalCreateLesson = () => ui.openModal('createLesson')
   return (
     <>
@@ -14,7 +13,7 @@ export default function PairSection({ lessons }) {
       >
         Добавить нагрузку
       </button>
-      {lessons.map((lesson) => <Pair lesson={lesson}/>)}
+      {workloads.map((workload) => <Pair workload={workload}/>)}
     </>
   )
 }

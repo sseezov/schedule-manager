@@ -1,4 +1,5 @@
-async function fetchLessonsByScheduleId(scheduleId) {
+// Получить все размещённые уроки для конкретного расписания
+async function fetchLessons(scheduleId) {
   try {
     const response = await fetch(`/apiv1/lessons/schedule/${scheduleId}`);
     if (!response.ok) {
@@ -9,14 +10,36 @@ async function fetchLessonsByScheduleId(scheduleId) {
   }
   catch (error) {
     console.error('Fetch error:', error);
-    return { schedule: null, lessons: [], groups: [], subjects: [], teachers: [] };
+    return { schedule: null, scheduledLessons: [], groups: [], subjects: [], teachers: [], workloads: [] };
   }
 }
 
-async function createPair(data) {
+// Удалить урок из расписания
+async function deleteLesson(scheduledLessonId) {
   try {
     const response = await fetch('/apiv1/lessons', {
-      method: 'POST',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(scheduledLessonId),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const message = await response.json();
+    return { type: 'success', ...message };
+  }
+  catch (error) {
+    return { type: 'error', message: error.message };
+  }
+}
+
+// api/scheduleLessons.js
+
+// Установить урок в расписание (создать или обновить)
+async function setLesson(data) {
+  try {
+    const response = await fetch('/apiv1/lessons', {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
@@ -31,12 +54,13 @@ async function createPair(data) {
   }
 }
 
-async function deletePair(lessonId) {
+// Удалить урок из расписания
+async function removeLesson(scheduleLessonId) {
   try {
     const response = await fetch('/apiv1/lessons', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lessonId),
+      body: JSON.stringify(scheduleLessonId),
     });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -49,4 +73,4 @@ async function deletePair(lessonId) {
   }
 }
 
-export { fetchLessonsByScheduleId, createPair, deletePair };
+export { fetchLessons, deleteLesson, setLesson, removeLesson };

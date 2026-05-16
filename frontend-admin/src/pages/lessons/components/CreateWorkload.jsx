@@ -2,7 +2,7 @@ import styles from '../../pages.module.css'
 import { render } from '../../../core/render'
 import { ui } from '../../../utils/dom'
 import LessonsPage from '../LessonsPage';
-import { createPair } from '../../../api/lessons';
+import { createWorkload } from '../../../api/workloads';
 
 export default function CreatePairForm({ groups, teachers, subjects, scheduleId }) {
 
@@ -16,7 +16,7 @@ export default function CreatePairForm({ groups, teachers, subjects, scheduleId 
       lessonsCount: formData.get('lessonsCount'),
       scheduleId: scheduleId
     }
-    const result = await createPair(data)
+    const result = await createWorkload(data)
     ui.closeModal()
     ui.showFlashMessage(result)
     render('#main', <LessonsPage />)

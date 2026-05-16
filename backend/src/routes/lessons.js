@@ -1,35 +1,25 @@
-import { createLesson, getLessons, updateLesson, deleteLesson, getLessonsByScheduleId } from '../controllers/lessons.js';
+import { getLessons, getLessonsByScheduleId, deleteLesson } from '../controllers/lessons.js';
 
-export default async function lessonsRoutes(fastify) {
-  // Получить все уроки (нагрузку)
+export default async function scheduleLessonsRoutes(fastify) {
+  // Получить все размещённые уроки
   fastify.get('/lessons', async (req, reply) => {
-    const lessons = await getLessons(fastify);
-    reply.send(lessons);
+    const scheduleLessons = await getLessons(fastify);
+    reply.send(scheduleLessons);
   });
 
-  // Получить уроки по расписанию
+  // Получить уроки по расписанию (для сетки)
   fastify.get('/lessons/schedule/:scheduleId', async (req, reply) => {
     const { scheduleId } = req.params;
-    const lessons = await getLessonsByScheduleId(fastify, scheduleId);
-    reply.send(lessons);
+    console.log(111111111, scheduleId);
+    const scheduleLessons = await getLessonsByScheduleId(fastify, scheduleId);
+    console.log(22222222, scheduleLessons);
+    reply.send(scheduleLessons);
   });
 
-  // Создать урок (нагрузку)
-  fastify.post('/lessons', async (req, reply) => {
-    const result = await createLesson(fastify, req.body);
-    reply.status(201).send(result);
-  });
-
-  // Обновить урок
-  fastify.put('/lessons', async (req, reply) => {
-    const result = await updateLesson(fastify, req.body);
-    reply.send(result);
-  });
-
-  // Удалить урок
+  // Удалить размещённый урок
   fastify.delete('/lessons', async (req, reply) => {
-    const lessonId = req.body;
-    const result = await deleteLesson(fastify, lessonId);
+    const scheduleLessonId = req.body;
+    const result = await deleteLesson(fastify, scheduleLessonId);
     reply.send(result);
   });
 }

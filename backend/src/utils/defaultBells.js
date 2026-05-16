@@ -11,7 +11,7 @@ export const buildDefaultBells = (lessonsInDay, lessonDurationMinutes = 90, brea
     bells.push({
       lessonNumber: i,
       startTime: startTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
-      endTime: endTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
+      endTime: endTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
     });
 
     if (i < lessonsInDay) {
