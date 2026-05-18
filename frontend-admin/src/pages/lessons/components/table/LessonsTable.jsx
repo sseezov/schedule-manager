@@ -7,7 +7,7 @@ import TableCell from './TableCell';
 
 export default function LessonsTable({ groups, schedule }) {
   const { weekdays, lessonsInDay } = schedule
-  console.log(123, weekdays);
+  // console.log(123, weekdays);
   const { selectedGroup } = state.ui
 
   return (

@@ -17,7 +17,7 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
   try {
     const { rows: scheduleLessons } = await client.query(
       lessonsQueries.getByScheduleId,
-      [scheduleId]
+      [scheduleId],
     );
 
     // Получаем информацию о расписании
@@ -89,14 +89,14 @@ export const setLesson = async (fastify, data) => {
     // Проверяем, есть ли уже урок в этой ячейке
     const { rows: [existing] } = await client.query(
       lessonsQueries.findByCell,
-      [data.scheduleId, data.weekday, data.lessonNumber]
+      [data.scheduleId, data.weekday, data.lessonNumber],
     );
 
     // Если ячейка занята, возвращаем ошибку
     if (existing) {
-      return { 
-        type: 'error', 
-        message: 'Эта ячейка уже занята другим уроком. Сначала удалите существующий урок.' 
+      return {
+        type: 'error',
+        message: 'Эта ячейка уже занята другим уроком. Сначала удалите существующий урок.',
       };
     }
 
@@ -109,10 +109,10 @@ export const setLesson = async (fastify, data) => {
       data.classroom || null,
     ]);
 
-    return { 
-      type: 'success', 
-      message: 'Урок добавлен в расписание!', 
-      id: insertResult.rows[0].id 
+    return {
+      type: 'success',
+      message: 'Урок добавлен в расписание!',
+      id: insertResult.rows[0].id,
     };
   }
   catch (error) {

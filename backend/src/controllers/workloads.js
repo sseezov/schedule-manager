@@ -25,7 +25,6 @@ export const getWorkloadByScheduleId = async (fastify, scheduleId) => {
 
 export const createWorkload = async (fastify, data) => {
   const client = await fastify.pg.connect();
-  console.log(1111, data);
   try {
     const result = await client.query(workloadsQueries.create, [
       data.scheduleId,
