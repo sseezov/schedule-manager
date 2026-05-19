@@ -1,7 +1,7 @@
 import { render } from "../../../core/render";
 import pages from "../../pages.module.css"
 import { redirect } from "../../../core/router";
-import state from "../../../state";
+import state from "../../../state/state";
 import Sidebar from "../../../shared/Sidebar";
 import styles from './SchedulesTable.module.css'
 

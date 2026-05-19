@@ -1,6 +1,6 @@
 import { render } from '../../../../core/render';
 import { refreshPage } from '../../../../core/router';
-import state from '../../../../state';
+import state from '../../../../state/state';
 import { deleteWorkload } from '../../../../api/workloads';
 import { ui } from '../../../../utils/dom';
 import InfoSection from '../InfoSection';

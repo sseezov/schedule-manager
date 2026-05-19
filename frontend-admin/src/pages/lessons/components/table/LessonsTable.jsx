@@ -1,4 +1,4 @@
-import state from '../../../../state';
+import state from '../../../../state/state';
 import { daysMap } from '../../../../utils/lessons';
 import HeadCell from './HeadCell';
 import styles from './LessonsTable.module.css'

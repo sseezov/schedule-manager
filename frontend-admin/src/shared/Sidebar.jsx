@@ -1,7 +1,7 @@
 import SidebarCategory from './SidebarCategory.jsx'
 import styles from './Sidebar.module.css'
 import { redirect } from '../core/router.js'
-import state from '../state.js'
+import state from '../state/state.js'
 
 export default function Sidebar() {
   const { currentScheduleId } = state

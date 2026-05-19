@@ -7,7 +7,7 @@ import styles from './LessonsPage.module.css'
 import InfoSection from './components/InfoSection';
 import { fetchWorkloads } from '../../api/workloads';
 import { scheduleToGroups } from '../../utils/lessons';
-import state from '../../state';
+import state from '../../state/state';
 
 export default async function LessonsPage() {
   const { pathname } = new URL(window.location.href)

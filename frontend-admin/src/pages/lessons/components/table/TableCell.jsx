@@ -1,6 +1,6 @@
 import { setLesson } from '../../../../api/lessons.js';
 import { refreshPage } from '../../../../core/router.js';
-import state from '../../../../state.js';
+import state from '../../../../state/state.js';
 import { lessonsToArray } from '../../../../utils/lessons.js';
 import styles from './LessonsTable.module.css'
 
