@@ -7,9 +7,8 @@ import InfoSection from '../InfoSection';
 import styles from './Workload.module.css'
 
 export default function Workload({ workload }) {
-
   const handleDeleteWorkload = async () => {
-    const result = await deleteWorkload(workload.id)
+    const result = await deleteWorkload(workload.workloadId)
     ui.showFlashMessage(result)
     refreshPage()
   }
@@ -25,7 +24,7 @@ export default function Workload({ workload }) {
   const selectworkload = () => {
     store.ui.selectedGroup = workload.groupId
     store.ui.selectedWorkload = workload
-    store.ui.workloadId = workload.id
+    store.ui.workloadId = workload.workloadId
     refreshPage()
   }
   const onMouseEnter = () => {
@@ -36,7 +35,7 @@ export default function Workload({ workload }) {
   }
 
   return (
-    <div class={store.ui.workloadId === workload.id ? `${styles.workload} ${styles.active}` : `${styles.workload}` } onMouseEnter = { onMouseEnter }
+    <div class={store.ui.workloadId === workload.workloadId ? `${styles.workload} ${styles.active}` : `${styles.workload}` } onMouseEnter = { onMouseEnter }
   onMouseLeave = { onMouseLeave } onClick = { selectworkload } onContextMenu = { handleContextMenu } >
       <div class={styles.subjectName}>{workload.subjectAbbr}</div>
       <div class={styles.divider}></div>

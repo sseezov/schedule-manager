@@ -11,7 +11,6 @@ export const daysMap = {
 export const lessonsToArray = lessonsInDay => Array.from({ length: lessonsInDay }).map((_, i) => ({ lessonNumber: i + 1, text: '', style: 'vacant' }));
 
 export const scheduleToGroups = (scheduleData) => {
-  console.log('scheduleData', scheduleData);
   const { schedule, lessons, groups } = scheduleData;
   const newGroups = structuredClone(groups).map((group) => {
     const weekdays = schedule.weekdays.slice().map(day => ({ dayIndex: day, lessons: lessonsToArray(schedule.lessonsInDay) }));
@@ -20,8 +19,6 @@ export const scheduleToGroups = (scheduleData) => {
 
   lessons.forEach((lesson) => {
     const currentGroup = newGroups.find(group => group.id === lesson.groupId);
-    console.log(122, lesson);
-    console.log(123, newGroups);
     const currentWeekday = currentGroup.weekdays.find(weekday => weekday.dayIndex === lesson.weekday);
     const currentLesson = currentWeekday.lessons[lesson.lessonNumber - 1];
     currentLesson.text = currentGroup.abbreviation;

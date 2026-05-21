@@ -7,7 +7,7 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
   try {
     const { rows: lessons } = await client.query(
       lessonsQueries.getByScheduleId,
-      [scheduleId]
+      [scheduleId],
     );
 
     // Получаем информацию о расписании
@@ -77,13 +77,12 @@ export const getLessonsByScheduleId = async (fastify, scheduleId) => {
 // Добавить урок в расписание
 export const setLesson = async (fastify, data) => {
   const client = await fastify.pg.connect();
-  
+
   try {
-    console.log(1111, data);
     // Проверяем, не занята ли ячейка
     const { rows: [existing] } = await client.query(
       lessonsQueries.findByCell,
-      [data.scheduleId, data.weekday, data.lessonNumber, data.groupId]
+      [data.scheduleId, data.weekday, data.lessonNumber, data.groupId],
     );
 
     if (existing) {
@@ -93,7 +92,7 @@ export const setLesson = async (fastify, data) => {
     // Получаем данные из workload
     const { rows: [workload] } = await client.query(
       lessonsQueries.getWorkloadData,
-      [data.workloadId]
+      [data.workloadId],
     );
 
     if (!workload) {

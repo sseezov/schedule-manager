@@ -12,7 +12,6 @@ export default function TableCell({ lessons, weekday, group }) {
     if (store.ui.selectedGroup !== group.id) return;
     const {lessonNumber} = lesson
     const result = await setLesson({...store.ui.selectedWorkload, lessonNumber, scheduleId: store.currentScheduleId, weekday})
-    console.log(123, {...store.ui.selectedWorkload, lessonNumber, scheduleId: store.currentScheduleId, weekday});
     decrementWorkload(store.ui.selectedWorkload.workloadId)
     ui.showFlashMessage(result)
     refreshPage()

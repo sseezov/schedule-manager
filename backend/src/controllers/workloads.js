@@ -41,7 +41,7 @@ export const decrementWorkload = async (fastify, workloadId) => {
   try {
     const { rows: [workload] } = await client.query(
       workloadsQueries.findById,
-      [workloadId]
+      [workloadId],
     );
 
     if (!workload) {
@@ -61,12 +61,12 @@ export const decrementWorkload = async (fastify, workloadId) => {
     // Иначе уменьшаем на 1
     const { rows: [updated] } = await client.query(
       workloadsQueries.decrement,
-      [workloadId]
+      [workloadId],
     );
 
-    return { 
-      type: 'success', 
-      message: 'Осталось пар: ' + updated.lessons_per_week 
+    return {
+      type: 'success',
+      message: 'Осталось пар: ' + updated.lessons_per_week,
     };
   }
   catch (error) {

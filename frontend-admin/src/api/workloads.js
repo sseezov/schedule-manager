@@ -1,5 +1,3 @@
-// api/workloads.js
-
 async function fetchWorkloads(scheduleId) {
   try {
     const response = await fetch(`/apiv1/workloads/schedule/${scheduleId}`);
@@ -7,7 +5,6 @@ async function fetchWorkloads(scheduleId) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log('workload', data);
     return data;
   }
   catch (error) {
@@ -16,7 +13,6 @@ async function fetchWorkloads(scheduleId) {
   }
 }
 
-// Создать новую нагрузку (предмет + преподаватель + группа + пар в неделю)
 async function createWorkload(data) {
   try {
     const response = await fetch('/apiv1/workloads', {
@@ -35,7 +31,6 @@ async function createWorkload(data) {
   }
 }
 
-// Удалить нагрузку
 async function deleteWorkload(workloadId) {
   try {
     const response = await fetch('/apiv1/workloads', {
@@ -55,7 +50,6 @@ async function deleteWorkload(workloadId) {
 }
 
 async function decrementWorkload(workloadId) {
-
   try {
     const response = await fetch(`/apiv1/workloads/${workloadId}/decrement`, {
       method: 'PATCH',
